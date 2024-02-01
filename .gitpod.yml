@@ -1,8 +1,19 @@
 ﻿image: gitpod/workspace-dotnet
+tasks:
+  - name: pull container images
+    init: |
+      # install container images
+      docker-compose pull
+    command: |
+      gp open README.md
+      export PUBLIC_IP=127.0.0.1
+      docker-compose up 
+  - name: Install PGCLI
+    init: |
+      pip install -U pgcli 
 vscode:
   extensions:
     - "muhammad-sammy.csharp"
-
 jetbrains:
   rider:
     plugins:
